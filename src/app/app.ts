@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NGRX_SIGNAL_STORE } from './core/root-store';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,9 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('ngrx-signal-store');
+  readonly store = inject(NGRX_SIGNAL_STORE);
+
+  ngOnInit(): void {
+    this.store
+  }
 }
