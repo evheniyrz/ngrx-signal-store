@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body, app-root {
+    height: 100%;
+    width: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: blueviolet;
+    font-family: Roboto, Arial, sans-serif;
+
+}
+
+* {
+    box-sizing: border-box;
+}
+
+app-root {
+    display: block;
+    overflow-y: auto;
+}
+
+app-root router-outlet + * {
+    display: block;
+    min-height: 100%;
+    width: 100%;
+    padding-top: 1px;
+}

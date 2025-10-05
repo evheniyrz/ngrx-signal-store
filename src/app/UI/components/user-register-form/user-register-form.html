@@ -1,1 +1,14 @@
-<p>user-register-form works!</p>
+<form [formGroup]="registerForm">
+    <input type="text" formControlName="nikName">
+    <select formControlName="avatar">
+        @for(avatar of avatarSource; track avatar.url){
+            <option [value]="avatar.url">
+                <div class="avatar-container">
+                    <img [src]="avatar.url" [alt]="avatar.name" width="30" height="30">
+                    <span class="description">{{avatar.name}}</span>
+                </div>
+            </option>
+        }
+    </select>
+    <input type="text" formControlName="uId">
+</form>

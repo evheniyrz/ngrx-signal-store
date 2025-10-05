@@ -1,7 +1,8 @@
 import { PartialStateUpdater } from "@ngrx/signals";
+import { ChatMember } from "./ngrx-signal-store.config";
 
-function incrementFirst(): PartialStateUpdater<{ count1: number }> {
-    return (state) => ({ count1: state.count1 + 1 });
+function addMemberUpdater(): PartialStateUpdater<ChatMember> {
+    return (state) => ({});
   }
   
   function incrementSecond(): PartialStateUpdater<{ count2: number }> {

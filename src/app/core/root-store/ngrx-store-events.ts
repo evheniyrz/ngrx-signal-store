@@ -1,5 +1,6 @@
 import {event, eventGroup} from '@ngrx/signals/events';
 import {type} from '@ngrx/signals'
+import { ChatMember } from './ngrx-signal-store.config';
 
 // export const opened = event('[Book Search Page] Opened');  
 // export const queryChanged = event(
@@ -8,11 +9,11 @@ import {type} from '@ngrx/signals'
 //   type<string>(),
 // );
 
-export const bookSearchEvents = eventGroup({
-    source: 'Book Search Page',
+export const addMemberEvents = eventGroup({
+    source: 'CAHT Register Page',
     events: {
     //   👇 Defining an event creator without a payload.
-      opened: type<void>(),
-      queryChanged: type<string>(),
+      addMember: type<ChatMember>(),
+      // queryChanged: type<string>(),
     },
   });
