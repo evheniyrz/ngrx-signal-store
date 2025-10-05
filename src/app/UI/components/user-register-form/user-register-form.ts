@@ -2,10 +2,16 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ChatMember } from '../../../core/root-store';
 import { RegisterForm } from './models/form.interface';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect, MatSelectModule } from '@angular/material/select';
+import { MatInput } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-user-register-form',
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule,
+    MatFormField, MatSelect, MatInput, MatLabel, MatSelectModule, MatButtonModule],
   templateUrl: './user-register-form.html',
   styleUrl: './user-register-form.scss'
 })
@@ -22,7 +28,7 @@ export class UserRegisterForm {
   #fbldr = inject(FormBuilder).nonNullable;
   registerForm: FormGroup<RegisterForm> = this.#fbldr.group({
     nikName: this.#fbldr.control(''),
-    avatar: this.#fbldr.control(''),
+    avatar: this.#fbldr.control({name: '', url:''}),
     uId: this.#fbldr.control(''),
   })
 
