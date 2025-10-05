@@ -9,10 +9,10 @@ import { NGRX_SIGNAL_STORE } from './core/root-store';
   styleUrl: './app.scss'
 })
 export class App {
-  protected readonly title = signal('ngrx-signal-store');
-  readonly store = inject(NGRX_SIGNAL_STORE);
+  
+  // readonly store = inject(NGRX_SIGNAL_STORE);
 
   ngOnInit(): void {
-    this.store
+    // this.store
   }
 }
