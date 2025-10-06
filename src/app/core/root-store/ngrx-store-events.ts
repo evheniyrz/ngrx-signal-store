@@ -10,10 +10,8 @@ import { ChatMember } from './ngrx-signal-store.config';
 // );
 
 export const addMemberEvents = eventGroup({
-    source: 'CAHT Register Page',
+    source: 'USER Registration',
     events: {
-    //   👇 Defining an event creator without a payload.
       addMember: type<ChatMember>(),
-      // queryChanged: type<string>(),
     },
   });

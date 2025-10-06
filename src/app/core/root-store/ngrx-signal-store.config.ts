@@ -10,7 +10,7 @@ export const INITIAL_STATE: NGRX_STORE_STATE = {
     interlocutor: null
 }
 
-export interface UserMessage {authorId: string; interlocutorId: string; date: number; message: string;}
+export interface UserMessage {authorId: string; date: number; message: string;}
 export interface ChatMember {
         nikName: string;
         avatar: string;
