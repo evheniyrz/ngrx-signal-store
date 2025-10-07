@@ -6,8 +6,24 @@ export type NGRX_STORE_STATE = {
 
 export const INITIAL_STATE: NGRX_STORE_STATE = {
     isLoading: false,
-    user: null,
-    interlocutor: null
+    user: {
+        nikName: '',
+        avatar: '',
+        uId: '',
+        messages: {
+            count: 0,
+        list: []
+        }
+    },
+    interlocutor: {
+        nikName: '',
+        avatar: '',
+        uId: '',
+        messages: {
+            count: 0,
+        list: []
+        }
+    },
 }
 
 export interface UserMessage {authorId: string; date: number; message: string;}
