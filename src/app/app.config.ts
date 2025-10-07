@@ -3,6 +3,8 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AbstractRegisterFormService } from './UI/components/user-register-form/service/register-form/register-form';
+import { FormStoreConnectorService } from './services/form-store-connector-service/form-store-connector-service';
 
 
 export const appConfig: ApplicationConfig = {
@@ -10,6 +12,10 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideAnimationsAsync('animations')
+    provideAnimationsAsync('animations'),
+    {
+      provide: AbstractRegisterFormService,
+      useClass: FormStoreConnectorService
+    }
   ]
 };

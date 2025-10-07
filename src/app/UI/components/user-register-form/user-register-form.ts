@@ -1,13 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ChatMember } from '../../../core/root-store';
 import { RegisterForm } from './models/form.interface';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatSelect, MatSelectModule } from '@angular/material/select';
 import { MatInput } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { minMaxLengthValidator, MyErrorStateMatcher, objectValueRequiredValidator } from './Utils';
-import { GenerateIdService } from '../../../services/generate-id/generate-id';
+import { AbstractRegisterFormService } from './service/register-form/register-form';
+import { NGRX_SIGNAL_STORE } from '../../../core/root-store';
+
 
 
 @Component({
@@ -19,7 +20,7 @@ import { GenerateIdService } from '../../../services/generate-id/generate-id';
   styleUrl: './user-register-form.scss'
 })
 export class UserRegisterForm {
-  #idGeneratorService = inject(GenerateIdService);
+  #abstractRegisterFormService = inject(AbstractRegisterFormService);
   matcher = new MyErrorStateMatcher();
   avatarSource = [
     {name: 'Businessman', url: 'free-icon-businessman-6998065.png'},
@@ -34,12 +35,15 @@ export class UserRegisterForm {
   registerForm: FormGroup<RegisterForm> = this.#fbldr.group({
     nikName: this.#fbldr.control('', {validators:[Validators.required, minMaxLengthValidator(3,8)]}),
     avatar: this.#fbldr.control({name: '', url:''}, {validators:[Validators.required,objectValueRequiredValidator(['name', 'url'])]}),
-    // uId: this.#fbldr.control('', {validators: [Validators.required]}),
+
   });
 
-  patchIdInputControl(): void {
-    // const uId = this.#idGeneratorService.generateID();
-    // this.registerForm.controls.uId.patchValue(uId);
+  store = inject(NGRX_SIGNAL_STORE);
+
+  createUser(): void {
+    if(this.registerForm.valid){
+      this.#abstractRegisterFormService.sendFormData(this.registerForm.getRawValue());
+    }
   }
 
 }

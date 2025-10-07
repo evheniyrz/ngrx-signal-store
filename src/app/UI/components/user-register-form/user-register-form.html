@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm">
+<form [formGroup]="registerForm" (ngSubmit)="createUser()">
     <mat-form-field>
         <mat-label>Enter your NikName</mat-label>
         <input matInput type="text" formControlName="nikName" [errorStateMatcher]="matcher">
@@ -35,15 +35,7 @@
             <mat-error>This field is required</mat-error>
         }
       </mat-form-field>
-   <!-- <mat-form-field [floatLabel]="'always'">
-     <mat-label>Generate your ID</mat-label>
-    <input matInput type="text" formControlName="uId" placeholder="Generate your ID" readonly  [errorStateMatcher]="matcher">
-    @if(registerForm.controls.nikName.hasError('required')) {
-        <mat-error>This field is required</mat-error>
-    }
-   </mat-form-field> -->
-   <!-- <div class="generate-id-action-container">
-    <button type="button" mat-raised-button color="primary" (click)="patchIdInputControl()">GENERATE ID</button>
-   </div> -->
    <button type="submit" mat-raised-button color="warn" >CREATE USER</button>
 </form>
+
+<pre>{{store.user()}}</pre>
