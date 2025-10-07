@@ -33,12 +33,12 @@ export class UserRegisterForm {
   #fbldr = inject(FormBuilder).nonNullable;
   registerForm: FormGroup<RegisterForm> = this.#fbldr.group({
     nikName: this.#fbldr.control('', {validators:[Validators.required, minMaxLengthValidator(3,8)]}),
-    avatar: this.#fbldr.control({name: '', url:''}, {validators:[objectValueRequiredValidator(['name', 'url'])]}),
+    avatar: this.#fbldr.control({name: '', url:''}, {validators:[Validators.required,objectValueRequiredValidator(['name', 'url'])]}),
     // uId: this.#fbldr.control('', {validators: [Validators.required]}),
   });
 
   patchIdInputControl(): void {
-    const uId = this.#idGeneratorService.generateID();
+    // const uId = this.#idGeneratorService.generateID();
     // this.registerForm.controls.uId.patchValue(uId);
   }
 
