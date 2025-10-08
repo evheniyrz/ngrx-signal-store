@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { AbstractRegisterFormService } from '../../UI/components/user-register-form/service/register-form/register-form';
 import { RegisterFormValue } from '../../UI/components/user-register-form/models/form.interface';
 import { Dispatcher } from '@ngrx/signals/events';
-import { addMemberEvents } from '../../core/root-store/ngrx-store-events';
+import { currentMemberAPIEvents } from '../../core/root-store/ngrx-store-events';
 import { ChatMember } from '../../core/root-store';
 import { GenerateIdService } from '../generate-id/generate-id';
 
@@ -21,7 +21,8 @@ export class FormStoreConnectorService implements AbstractRegisterFormService {
         list:[]
       }
     };
-    this.#dispatcher.dispatch(addMemberEvents.addMember(member))
+
+    this.#dispatcher.dispatch(currentMemberAPIEvents.addMember(member))
   }
   
 }

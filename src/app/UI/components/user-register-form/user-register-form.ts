@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RegisterForm } from './models/form.interface';
 import { MatError, MatFormField, MatLabel } from '@angular/material/form-field';
@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { minMaxLengthValidator, MyErrorStateMatcher, objectValueRequiredValidator } from './Utils';
 import { AbstractRegisterFormService } from './service/register-form/register-form';
 import { NGRX_SIGNAL_STORE } from '../../../core/root-store';
+import { JsonPipe } from '@angular/common';
 
 
 
@@ -15,9 +16,10 @@ import { NGRX_SIGNAL_STORE } from '../../../core/root-store';
   selector: 'app-user-register-form',
   imports: [
     ReactiveFormsModule,
-    MatFormField, MatSelect, MatInput, MatLabel, MatSelectModule, MatButtonModule, MatError],
+    MatFormField, MatSelect, MatInput, MatLabel, MatSelectModule, MatButtonModule, MatError, JsonPipe],
   templateUrl: './user-register-form.html',
-  styleUrl: './user-register-form.scss'
+  styleUrl: './user-register-form.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserRegisterForm {
   #abstractRegisterFormService = inject(AbstractRegisterFormService);
