@@ -7,6 +7,7 @@ export const currentMemberAPIEvents = eventGroup({
     events: {
       addMember: type<ChatMember>(),
       addMessage: type<{userId: string;message:UserMessage;}>(),
-      removeMessage: type<{mId: string;}>()
+      removeMessage: type<{mId: string;}>(),
+      removeAllMessages: type<void>()
     },
   });

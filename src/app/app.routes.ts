@@ -8,14 +8,14 @@ export const routes: Routes = [
         },
     },
     {
-        path: 'register',
+        path: 'chat-room/:id',
         loadComponent() {
-            return import('./pages/user-register/user-register-page').then(p => p.UserRegisterPage)
+            return import('./pages/chat-room/chat-room').then(p => p.ChatRoom)
         },
     },
     {
         path: '**',
         pathMatch: 'full',
-        redirectTo: 'register'
+        redirectTo: ''
     }
 ];

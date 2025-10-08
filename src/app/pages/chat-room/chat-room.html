@@ -1,0 +1,17 @@
+<section>
+    <header>User Name, avatar</header>
+    <div class="rooms"></div>
+    <div class="chat">
+        <div class="message-area"></div>
+        <div class="message-form-container">
+            <form [formGroup]="messageForm">
+                <mat-form-field subscriptSizing="dynamic">
+                    <input matInput formControlName="message" type="text">
+                </mat-form-field>
+                <button matIconButton type="submit" color="primary">
+                    <mat-icon aria-hidden="false" aria-label="Example send icon" fontIcon="send"></mat-icon>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,4 @@
+* load empty section for messages
+* display in messages area - create chat room
+* in template display mesages area when chat room is selected
+* dinamic add entities with config to store relative to chat room {chatRoomName as entity collection name, id cahtroom for DB}
